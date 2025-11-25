@@ -73,7 +73,6 @@ public:
 };
 
 //5. Arrays and strings
-
 a. Traverse in an array : 
   => for 1D array: for(i = 0 : n) - Here we directly print cout << "Array is :: << arr[i] << endl
   => for 2D array: for(i = 0 : m) for(j = 0 : n) res = arr[i][j] here later cout << result
