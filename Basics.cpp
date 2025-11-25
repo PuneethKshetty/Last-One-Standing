@@ -81,3 +81,41 @@ b. Traverse in an string : for( i = 0 : strlen(str)) - > Here you check whether 
 
 //6. Imporant:
 1. Swap function has 0(1) time complexity
+
+//7. Functions [Pass by value and reference]
+1. Pass by value: here we make a copy of a variable , original value of the variable wont be affected. Used for safety, Memory usage will be more because of copies creation.
+2. Pass by reference : here we make a dont make a copy instead we modify the original variable, efficient, memory usage will be less compared to value
+
+code:
+// Pass by value:
+#include<iostream>
+using namespace std;
+
+void modify(int a)
+{
+   a = a + 10;
+}
+
+int main()
+{
+  int x =5;
+  modify(x); //Output will be 5 because only the copy of the variable is done hence original changes in the variable isnt gonna be affected
+  return 0;
+}
+
+code:
+// Pass by value:
+#include<iostream>
+using namespace std;
+
+void modify(int &a)
+{
+   a = a + 10;
+}
+
+int main()
+{
+  int x =5;
+  modify(x); //Output will be 15 because the original changes in the variable is gonna be affected.
+  return 0;
+}
