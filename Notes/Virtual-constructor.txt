@@ -1,0 +1,8 @@
+Question:
+1. Why constructor cannot be virtual, if not why?
+Virtual functions rely on the vtable (virtual table) mechanism.
+The vtable is created after the constructor starts executing, because the object’s type must be known and fully constructed before virtual dispatch works.
+If a constructor were virtual, the compiler would need to decide which constructor to call before the object exists, which is impossible because virtual dispatch depends on the object’s vtable pointer (which is set during construction).
+
+2. What will happen if destructor is virtual?
+If you intend to delete derived objects through a base-class pointer, the base class must have a virtual destructor. Otherwise, only the base part gets destroyed, and the derived part’s destructor won’t run. That leads to resource leaks or undefined behavior.
