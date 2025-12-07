@@ -1,0 +1,47 @@
+Zombie process: It is a process where child process is finished excecution or terminated, but still its entry present in process table
+the parent process needs to read for child process exit status. once wait system call is proceeded then zombie process is removed from process table.
+
+Example
+
+int main()
+{
+    pid_t pid = fork();
+    if(pid > 0)
+    {
+        cout << "Parent process sleeping \n" << getpid() << endl;
+        sleep(20);
+    }
+    else if(pid == 0)
+    {
+        cout << "child process exiting \n" << getpid() << endl;
+        exit(0);
+    }
+    else{
+        cout << "Fork failed \n";
+    }
+    return 0;
+}
+
+Orphan process: 
+Here the process are still running though parent processs finish the exceution or still it doesnt exits , then child process will run independently[intentionally or unintentionally]
+To avoid intentionally we use process group mechanism where parents process crashes. or handled by init
+Example
+
+int main()
+{
+    pid_t pid = fork();
+    if(pid > 0)
+    {
+        cout << "Parent process exits \n" << getpid() << endl;
+        exit(0);
+    }
+    else if(pid == 0)
+    {
+        sleep(20);
+        cout << "child process running adopted by init \n" << getpid() << endl;
+    }
+    else{
+        cout << "Fork failed \n";
+    }
+    return 0;
+}
