@@ -1,0 +1,14 @@
+Links : allow more than one file name to refer to the same file.
+
+Soft Links:
+1. Files that are soft linked will have different inode number.
+2. Can be used to linking directories.
+3. Can be used across file systems.
+4. It point to file name, does not retain data.
+5. If original file removed, link will not work to access original's data.
+6. Soft links are slower.
+
+commands
+ln -s t1.txt sl[symbolic link]
+
+ls -il t1.txt sl hl[to check inode numbers]
