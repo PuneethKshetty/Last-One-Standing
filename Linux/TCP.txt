@@ -1,0 +1,29 @@
+TCP:
+1. connection oriented protocol that helps in exchange of messages between different devices over a network.
+2. Operators on Transport layer. between application and network layer in OSI
+3. IP works with TCP to send data packets between computers.
+4. Reliable connection between sender and receiver using Three way handshake[SYN,SYN-ACK,ACK] and uses 4 way handshake[FIN,ACK,FIN,ACK] to close connections properly.
+5. Features: Segments numbering, connection-oriented, full duplex, flow control, error control, congestion control.
+
+Working of TCP:
+1. Data segmentation: application data divided into small segments for efficent transmission insteading of sending all at once.
+2. Routing. Each segment can take different route through network, depending on traffic or congestion ,reach same destination.
+3. Reassembly: At receiver's end, TCP resassembles these segments into original message using sequence numbers.
+4. Acknowledgment: Receievr send ACK messages back to confirm successful receipt of each segment.
+if ack not received, TCP retransmits missing segment.
+5. Error and Flow control: TCP uses checksums to detect errors and sliding window mechanims to control flow of data.
+
+Advantage:
+1. Reliable
+2. make sure data reach proper destination in exact order sent.
+3. Well documented and widely implemented
+4. Works in conjunction with IP
+
+Disadvantage:
+1. TCP runs several layers so slow down speed
+2. TCP made for wide area networks so size can become issue for small network with less resource.
+3. Cannot work with BLE connection.
+
+Sliding window protocol: allow multiple packets before receiving Acknowledgment and uses window for managing packet flow improves network efficency.
+over long distance or high latency networks.
+Sliding window protocols are used where reliable and ordered delivery of packets is needed, such as in the Data Link Layer and the Transmission Control Protocol in Transport Layer.
