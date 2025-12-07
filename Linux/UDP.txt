@@ -1,0 +1,14 @@
+UDP: User Datagram protocol
+Transfer protocol of IP provides fast, connectionless and lightweight communcation between processes.
+No guarantee of delivery, or error checking making it suitable for real time and time sensitive application such as video streaming, DNS, VoIP.
+Header has 8 bytes long followed by data payload
+has source port , destination port and length , checksum [all 16 bits][optional in UDP]
+
+Advantages:
+1. DNS uses UDP for fast query/response lookups.
+2. DHCP uses UDP to dynamically assign IP addresses to devices where small msg is exchanged.
+3. VoIp uses UDP for real time voice communication. No delays, tolerates some packet loss.
+4. RIP uses UDP for send periodic routing updates between routers.
+5. NTP uses UDP to synchronize system clocks across networks with minimal overhead.
+
+UDP used in DDOS attack[distributed denial of service]: attackers sends large no of UDP packets to target port exploiting UDP's connectionless nature.
