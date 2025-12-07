@@ -1,0 +1,26 @@
+// How git actually works?
+
+1. Working directory where we do our work [ git add]
+2. Staging area [git commit]
+3. Local repository [git push]
+4.  Remote repository [git pull goes to working directory]
+
+// git commands
+1. git config 
+Like git config --global user.name "yourname" [ customize git workflow]
+
+2. git init - initalize a new git repository
+3. git status- what files have added, modify or deleted
+4. git add . or git add <filename> - add files in staging area
+5. git commit -m "New messge" - store version of project in git history
+6. git clone - make copy of remote and send it to local for making changes
+7. branch is like copy of documents
+8. git branch - to check how many branches created
+9. git checkout -b <branchname> - create new branch and switch to the branch
+10. git switch <branch-name> - switch branch name
+11. git push <remote>(origin) <branch> - add from local to remote
+12. git pull - fetch all changes made from remote to local
+13. git show [main] - view history of projects
+14. git branch -d <branch-name> - locally delete the branch 
+15. git push --delete origin <branch-name>-  deletes remote repo
+16. 
