@@ -17,7 +17,7 @@ bool isValid(string& s)
    return true;
 }
 
-void generateIPHelper(string& s, int index, string curr, int cnt, string res)
+void generateIPHelper(string& s, int index, string curr, int cnt, vector<string>& res)
 {
     string temp = " ";
     if(index >= s.size())
