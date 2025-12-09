@@ -1,0 +1,55 @@
+//CAN Communication
+
+1. Fast and Reliable protocol, used between ECU's[Microcontroller] in vehicle.
+2. CAN Bus Toplogy: Shared bus, No master device, Broadcast type bus[activities are monitored on network], message based protocol
+Serial based Communication and half duplex and asynchronous
+Bus is differential pair of wires, twisted to prevent EMI[electro magnetic interference]. Because if there is 2 separate wires distortion would be led for both wires
+
+3. CAN message arbitration
+Each CAN Node has ID
+Firstly if it wants to send anything it will send its ID,
+In CAN bus, 0 bit overpowers the 1 bit.
+Lowwer ID HIgh priority
+
+4. CAN protocol operates on PHYSICAL Layer and Data LINk Layer of OSI model.
+
+
+5. CAN Data link:
+CAN has 64 bits/ 8 bytes of data in CAN Frame.
+Complete CAN Frame: 
+SOF[start of frame] - 1bit
+Arbitration [Message identifier] - 
+    1. identifier : sets priority of data frame
+    2. RTR - Remote Transmission request - defines the frame type[data frame or remote frame] - 1bit
+
+Control [User defined functions]
+    IDE bits - identifier extension [Dominant and recessive]
+Data 
+    Data length code bits [ actual data kept] - 4 bits
+    Data field - 8 bytes
+CRC - No corruption in data while detection
+ACK - ack bits will be acknowledged by receiver after receivng all bytes from sender
+EOF [End of frame] - 7 bits
+
+[How CAN bus works]
+CAN High speed waveform: Voltage level specification
+2 wires CAN High and CAN low, difference between 2 wires say whether bit 0 or 1
+No difference between CNA high and CAN low - recessive voltage
+More difference between them means Dominant voltage
+
+Idle bus state is recessive
+Dominant state dominates recessive state
+
+CAN Node:
+Microcontroller that has CAN controller, CAN controller handles data link layer of protocol[CAN frames, IDs]
+CAN Transeivers implements PHY Layer usually external to device.
+
+Acceptance filters: Ignore metadata which it doesnt care about.
+
+difference between Standard data frame and remote frame ?
+- Remote frame requests data and has no data field
+RTR for remote frame bit is recessive meanwhile data frame is dominant
+
+LIN: Local interconnect network: Low cost , non safety crictical, Sub bus of CAN
+Difference: Master slave communication , singlewire, Network managed and controlled by Master
+
