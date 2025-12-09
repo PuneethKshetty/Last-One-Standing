@@ -1,0 +1,9 @@
+AutoSAR Com stack : reliable communication framework medium which enables ECU to exchange data across networks[CAN/LIN etc]
+
+COM stack divided into multiple layers:
+1. MCAL: Handson with hardware and has 2 main roles of communication
+    Hardware abstraction communication which hides hardware specs from upper layer[CAN transceiver], Control respective drivers[CAN driver]
+2. Interface layers: Lets software talk to hardware uniformly [CAN controller]
+3. Transport layer : handles logic for multiframe message, splits in pieces then reassembles
+4. PDUR: Routing data packets from one software module to another
+5. COM: To translate application signals into PDU, Like signal grouping and ordering.
