@@ -5,7 +5,7 @@ using namespace std;
 int missNum(vector<int> S)
 {
     int xor1 , xor2 = 0;
-    int n = S.size();
+    int n = S.size() + 1;
     for(int i = 0; i < n - 1;i++)
     {
         xor2 ^= S[i];
