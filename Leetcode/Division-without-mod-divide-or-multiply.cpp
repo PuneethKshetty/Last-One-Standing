@@ -19,9 +19,9 @@ long long divide(long long dividend, long long divisor)
     //Next step is to use for loop moving from most significant bit [31] to low significant bit[0]
     for(int i = 31;i >= 0; i--)
     {
-        if((dividend << i) <= divisor)
+        if((divisor << i) <= dividend)
         {
-           divisor -= (dividend << i);
+           dividend -= (divisor << i);
            quotient |= (1LL << i);
         }
     }
