@@ -1,0 +1,161 @@
+// Docker : 
+virualization software, develop and deploy applications much easy
+
+packages application will all necessary dependecies, configuration , runtime and system tool into container[portable artifacts] which applications needs to run.
+
+//Before docker containers [ problems]
+every one had to manually install and configure services directly on their OS o their machine.
+OS also would differ so other devs, 
+
+//deployment process before containers
+devs produce artifacts[Jar file] + installation instructions + DB service + its instructions as well 
+would send it operation team - error prone conflicts with dependency version
+dev + ops team need to communicate which is overhead
+
+//with containers
+no installation on local environment
+command same for all OS, standardize the process of running any service 
+can run different version of app without any conflicts
+
+//deployment process after containers
+instead of instructions in text everything is packed inside docker artifact.
+Ops team need to run command to fetch and run docker artifacts and also need to install docker runtime on server
+
+/pull image
+docker pull image[nginx:1.23] i not mentioned then latest will be pulled.
+
+//run image
+docker run nginx[image-name]
+
+docker ps [ running container list will be printed]
+
+docker run -d nginx [here -d means detach] - runs in background
+
+docker logs containerID- prints application logs
+
+Port binding:
+docker run -d -p 9000:80 nginx:1.23
+can access application on that port like 9000 in local host
+
+docker stop containerID //stop docker conatiner
+
+
+//start and stop containers
+docker ps -a -> list of all container running or stopped
+
+//start docker
+docker start containerid[add sameid instead of creating new Container ID]
+
+//assign name to container like web-app
+docker run --name web-app -d -p 9000:80 nginx:1.23
+
+check logs in that container
+docker logs web-app
+
+//private and public docker registeries
+
+upload image but first authenticate and then we can register the image
+
+//registry and repository
+registry is basically like service which provides storage
+collection of repositories
+Ex: docker hub is a registry, we can host private and public repo for your app
+
+repository: collection of related images with same name but different versions
+
+AWS-ECR -registry, you can have mutiple repositories
+
+// create own images
+building own docker image: create a docker file
+
+1. we need to create "definition" of how to build an image from our app.
+definition is written in a docker file - Text document contains cmd to assemble an image.
+docker can build image by reading those instructions.
+
+// lets create docker file
+name file : Dockerfile
+it starts from a parent image or "base image"
+its a docker image that your image is based on.
+if we choose base image. depending on which tools you need to have available.
+
+every image consists of multiple image layers, so image layers can be cached.
+
+FROM : Build this image from specified image.
+FROM node:19-alpine
+
+COPY : COPY files or directories from src and adds them to filesystem of container at path <dest>
+"RUN" executed in container.
+"COPY" exceuted on host.
+COPY package.json /app/
+COPY src /app/
+
+WORKDIR: Sets working directory of all following commands
+like changind directory: cd
+
+WORKDIR /app
+
+RUN : will execute any command in a shell inside container environment
+RUN npm install
+
+CMD: instructions that is to be executed when docker conainer starts
+there can be only one cmd instruction in dockerfile.
+
+CMD ["node", "server.js"]
+
+//Build image
+docker build -t web-app:1.0 .
+. - curr directories
+
+docker images - to check images built
+
+docker run -d -p 3000:3000 web-app :1.0
+
+docker ps
+
+go to browser and check localhost : 3000
+
+
+//how docker fits in SDLC [in real life process]
+Developing an JS app in local environment, application uses imagine it uses mongodb so you pull image of it, instead of manually downloading it.
+
+and then once code is completed, you will commit the changes and push it in git
+
+that will trigger jenkins build, it will produce artifacts of applications and create docker image of JS artificats, once created it will get pushed to private repository,
+
+both images [JS image and mongodb image] are pulled and deploy into deployment server. Now 2 containers are created custom JS and for Mongodb, Tester can take it from deployment server and use it.
+
+
+//VM vs Docker 
+
+what part of OS do they virtualize?
+Docker : contains OS application layers, service and apps installed omn top of that layer, use kernel of host
+VM: contains OS application layers and its own kernel.
+advantages:
+
+Docker container is made up of Linux based basically.
+
+differences:
+docker                               VM
+Docker images couple of Mb,         More GB
+containers take secs to start       Takes min to start
+Compatible only with linux distro   Compatible in all OS
+
+//Docker desktop: 
+Uses hypervisor layer with lightweight linux distro
+
+//Docker image vs containers
+Images:
+an executable application artifact
+includes app src code, also complete environement configuration
+adds environement variables, create directories, files etc.,
+Immutable template thatdefines how container will be realized
+
+Containers:
+Actually starts application
+running instance of image is container
+can run multiple containers from 1 image
+thats when container environment is created
+
+//docker registry
+storage and distribution system for docker images.
+Ex: Docker Hub
