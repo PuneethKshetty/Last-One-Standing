@@ -33,7 +33,7 @@ docker run -d nginx [here -d means detach] - runs in background
 
 docker logs containerID- prints application logs
 
-Port binding:
+Port binding: Binds container port to hosts port to make service avaialble outside the world.
 docker run -d -p 9000:80 nginx:1.23
 can access application on that port like 9000 in local host
 
